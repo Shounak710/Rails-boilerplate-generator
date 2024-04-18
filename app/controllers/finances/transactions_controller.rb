@@ -1,0 +1,1 @@
+class Finances::TransactionsController
