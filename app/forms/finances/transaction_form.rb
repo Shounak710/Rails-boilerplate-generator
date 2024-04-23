@@ -3,9 +3,9 @@
 class Finances::TransactionForm
   include ActiveModel::Model
 
-  attr_accessor :method_id, :category_id, :type, :memo, :amount
+  attr_accessor :amount, :category_id, :id, :memo, :method_id, :type
 
-  validates :method_id, :category_id, :type, :memo, :amount, presence: true
+  validates :amount, :category_id, :id, :memo, :method_id, :type, presence: true
 
   attr_reader :record
 
@@ -26,6 +26,6 @@ class Finances::TransactionForm
   private
 
     def attributes
-      { method_id: method_id, category_id: category_id, type: type, memo: memo, amount: amount }
+      { amount: amount, category_id: category_id, id: id, memo: memo, method_id: method_id, type: type }
     end
 end
