@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-class Finances::PaymentMethods::UpdateCase
+class Finances::Transactions::UpdateCase
   def initialize(attributes)
-    @form = ::Finances::PaymentMethodForm.new(attributes)
+    @form = ::Finances::TransactionNewForm.new(attributes)
   end
 
   def perform
