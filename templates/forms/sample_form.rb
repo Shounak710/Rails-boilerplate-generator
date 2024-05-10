@@ -10,7 +10,7 @@ class {class_name}Form
   attr_reader :record
 
   def save
-    @record = id ? ::{class_name}.find(id) : ::{class_name}.new
+    @record = id ? {class_name}.find(id) : {class_name}.new
 
     if valid?
       @record.update!(attributes)
