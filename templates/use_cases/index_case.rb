@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class {module_name}::IndexCase < IndexCase
+class {class_name}::IndexCase < IndexCase
   def initialize(attributes)
     @attributes = attributes
     super(page_parameters: attributes[:page_parameters], relation: filtered_{route})

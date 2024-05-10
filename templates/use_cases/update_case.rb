@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class {module_name}::UpdateCase
+class {class_name}::UpdateCase
   def initialize(attributes)
     @form = ::{class_namespace}::{pascalcase_route_singular}Form.new(attributes)
   end

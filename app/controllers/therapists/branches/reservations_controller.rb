@@ -15,7 +15,7 @@ result = use_case.perform
 render json: result.items,
                       meta: result.pagination,
                       meta_key: :pagination,
-                      each_serializer: ::Therapists::Branches::ReservationsSerializer
+                      each_serializer: ::Therapists::Branches::ReservationSerializer
 end
 
 def create
@@ -26,7 +26,7 @@ result = use_case.perform
 if result.errors.any?
 render json: { errors: result.errors }, status: :unprocessable_entity
 else
-render json: result.record, serializer: ::Therapists::Branches::ReservationsSerializer, status: :created
+render json: result.record, serializer: ::Therapists::Branches::ReservationSerializer, status: :created
 end
 end
 
@@ -35,7 +35,7 @@ use_case = ::Therapists::Branches::Reservations::ShowCase.new(account: @account,
 
 result = use_case.perform
 
-render json: result, serializer: ::Therapists::Branches::ReservationsSerializer
+render json: result, serializer: ::Therapists::Branches::ReservationSerializer
 end
 
 def update
@@ -46,7 +46,7 @@ result = use_case.perform
 if result.errors.any?
 render json: { errors: result.errors }, status: :unprocessable_entity
 else
-render json: result.record, serializer: ::Therapists::Branches::ReservationsSerializer, status: :ok
+render json: result.record, serializer: ::Therapists::Branches::ReservationSerializer, status: :ok
 end
 end
 
@@ -66,7 +66,7 @@ private
 
 def reservation_params
 params.require(:reservation)
-                    .permit(:start_time, :end_time, :branch_id, :therapist_id)
+                    .permit(:start_time, :end_time, :branch_id, :therapist_id, :id)
 end
 
 def filter_params

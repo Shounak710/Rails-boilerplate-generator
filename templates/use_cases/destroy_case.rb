@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class {module_name}::DestroyCase
+class {class_name}::DestroyCase
   include ActiveModel::Model
 
   attr_accessor :{route_singular}

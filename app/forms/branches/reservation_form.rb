@@ -3,9 +3,9 @@
 class Branches::ReservationForm
   include ActiveModel::Model
 
-  attr_accessor :branch_id, :end_time, :id, :start_time, :therapist_id
+  attr_accessor :branch_id, :end_time, :id, :id, :start_time, :therapist_id
 
-  validates :branch_id, :end_time, :id, :start_time, :therapist_id, presence: true
+  validates :branch_id, :end_time, :id, :id, :start_time, :therapist_id, presence: true
 
   attr_reader :record
 
@@ -26,6 +26,6 @@ class Branches::ReservationForm
   private
 
     def attributes
-      { branch_id: branch_id, end_time: end_time, id: id, start_time: start_time, therapist_id: therapist_id }
+      { branch_id: branch_id, end_time: end_time, id: id, id: id, start_time: start_time, therapist_id: therapist_id }
     end
 end

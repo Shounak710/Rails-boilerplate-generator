@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class {module_name}::ShowCase
+class {class_name}::ShowCase
   include ActiveModel::Model
 
   attr_accessor :{route_singular}
