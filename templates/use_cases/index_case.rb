@@ -15,6 +15,6 @@ class {module_name}::IndexCase < IndexCase
     end
 
     def {route}
-      @{route} ||= ::{namespace}::{pascalcase_route_singular}.order(date: :desc)
+      @{route} ||= ::{class_namespace}::{pascalcase_route_singular}.order(date: :desc)
     end
 end
