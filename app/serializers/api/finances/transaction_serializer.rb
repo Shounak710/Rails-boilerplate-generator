@@ -5,5 +5,5 @@ class ::Api::Finances::TransactionSerializer < ActiveModel::Serializer
 
   type :transaction
 
-  attributes :account_id, :amount, :id, :id, :id, :memo, :method_id
+  attributes :account_id, :amount, :id, :memo, :method_id, :type
 end

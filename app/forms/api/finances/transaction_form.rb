@@ -3,9 +3,9 @@
 class ::Api::Finances::TransactionForm
   include ActiveModel::Model
 
-  attr_accessor :account_id, :amount, :id, :memo, :method_id
+  attr_accessor :account_id, :amount, :id, :memo, :method_id, :type
 
-  validates :account_id, :amount, :id, :memo, :method_id, presence: true
+  validates :account_id, :amount, :id, :memo, :method_id, :type, presence: true
 
   attr_reader :record
 
@@ -26,6 +26,6 @@ class ::Api::Finances::TransactionForm
   private
 
     def attributes
-      { account_id: account_id, amount: amount, id: id, memo: memo, method_id: method_id }
+      { account_id: account_id, amount: amount, id: id, memo: memo, method_id: method_id, type: type }
     end
 end

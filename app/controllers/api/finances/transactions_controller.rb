@@ -6,8 +6,8 @@ before_action :set_transaction, only: [:show, :update, :destroy]
 
 def index
 use_case = ::Api::Finances::Transactions::IndexCase.new(
-        filter_parameters: :method_id, :type, :account_id,
-        sort_params: :amount, :date,
+        filter_parameters: :account_id, :method_id, :type,
+        sort_params: :amount, :method_id,
         page_parameters: page_parameters)
 
 result = use_case.perform
@@ -65,16 +65,16 @@ end
 private
 
 def transaction_params
-params.require(:transactions)
-                    .permit(:amount, :memo, :method_id, :account_id, :id, :id, :id)
+params.require(:transaction)
+                    .permit(:account_id, :amount, :id, :memo, :method_id, :type)
 end
 
 def filter_params
-params.permit(:method_id, :type, :account_id)
+params.permit(:account_id, :method_id, :type)
 end
 
 def sort_parameters
-params.permit(sort: [:amount, :date])
+params.permit(sort: [:amount, :method_id])
 end
 
 def set_transaction
