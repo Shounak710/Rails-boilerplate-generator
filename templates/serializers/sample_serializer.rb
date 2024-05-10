@@ -5,5 +5,5 @@ class {class_name}Serializer < ActiveModel::Serializer
 
   type :{route_singular}
 
-  attributes {object_param_items}
+  attributes {object_attributes}
 end
