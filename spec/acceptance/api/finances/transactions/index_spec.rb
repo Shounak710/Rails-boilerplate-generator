@@ -3,18 +3,24 @@
 require "rails_helper"
 require "rspec_api_documentation/dsl"
 
-resource "\"{route_singular_capitalized}\"" do
+resource "Transaction" do
   include_context "auth"
 
-  explanation "\"{route_capitalized}\""
+  explanation "Transactions"
 
   header "Accept", "application/json"
   header "content-type", "application/json; charset=utf-8"
 
   let(:result) { JSON.parse(response_body, symbolize_names: true) }
 
-  get route do
-    { parameter_explanations }
+  get "api/finances/transactions" do
+    parameter :account_id, "", required: false
+parameter :amount, "", required: false
+parameter :id, "", required: false
+parameter :memo, "", required: false
+parameter :method_id, "", required: false
+parameter :type, "", required: false
+
     # parameter :type, "Specify the type of reservations to be included. Accepts 'analytical' for now", required: false
     parameter :page, "No", required: false
     parameter :per, "No", required: false
@@ -33,11 +39,10 @@ resource "\"{route_singular_capitalized}\"" do
       it_behaves_like "authenticable_route", status: 200
 
       context "no query parameter set" do
-        let(:expected_response) {
-        }
+        let(:expected_response) {}
 
-        example_request "Returns {route}" do
-          expect(result[:{route}]).to eq(expected_response)
+        example_request "Returns transactions" do
+          expect(result[:transactions]).to eq(expected_response)
         end
       end
 

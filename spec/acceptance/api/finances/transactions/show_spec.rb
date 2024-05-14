@@ -3,17 +3,17 @@
 require "rails_helper"
 require "rspec_api_documentation/dsl"
 
-resource {route_singular_capitalized} do
+resource "Transaction" do
   include_context "auth"
 
-  explanation {route_capitalized}
+  explanation "Transactions"
 
   header "Accept", "application/json"
   header "content-type", "application/json; charset=utf-8"
 
   let(:result) { JSON.parse(response_body, symbolize_names: true) }
 
-  get f"{route}/:id" do
+  get "api/finances/transactions/:id" do
     before do
       # create object
     end
@@ -25,8 +25,8 @@ resource {route_singular_capitalized} do
         {}
       end
 
-      example_request "Returns single item" do
-        expect(result[:{route_singular}]).to eq(expected_response)
+      example_request "Returns single record" do
+        expect(result[:transaction]).to eq(expected_response)
       end
     end
 

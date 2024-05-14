@@ -3,20 +3,19 @@
 require "rails_helper"
 require "rspec_api_documentation/dsl"
 
-# Resolve eager-loading
-resource f"\"{ route_singular_capitalized }\"", bullet: :skip do
+resource "Transaction", bullet: :skip do
   include_context "auth"
 
-  explanation { route_capitalized }
+  explanation "Transactions"
 
   header "Accept", "application/json"
   header "content-type", "application/json; charset=utf-8"
 
   let(:result) { JSON.parse(response_body, symbolize_names: true) }
 
-  delete "#{route}/:id" do
+  delete "api/finances/transactions/:id" do
     context "valid id" do
-      let(:id) { route_singular.id }
+      let(:id) { transaction.id }
     end
 
     context "invalid id" do
